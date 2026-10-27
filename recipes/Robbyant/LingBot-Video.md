@@ -224,7 +224,7 @@ Submit the same text-to-video job as above, with
 
 #### Notes
 
-- Memory usage: the offline runner reports `9248 MiB` worker peak reserved
+- Memory usage: the offline runner reports `10192 MiB` worker peak reserved
   for 9 frames at `192x320` in 2 steps and `9152 MiB` for 25 frames at
   `480x480` in 20 steps. Up to that shape the peak is set by the VAE, the
   non-block modules, and the prefetched blocks; 81 frames at `480x832` in
@@ -295,7 +295,7 @@ reporting worker peak reserved GPU memory and generation time for one request:
 
 | Offload selector | 9 frames, `192x320`, 2 steps | 25 frames, `480x480`, 20 steps | 81 frames, `480x832`, 4 steps |
 |------------------|------------------------------|--------------------------------|-------------------------------|
-| `--enable-layerwise-offload` | `9248 MiB`, `6.6s` | `9152 MiB`, `47.4s` | `16104 MiB`, `38.4s` |
+| `--enable-layerwise-offload` | `10192 MiB`, `6.7s` | `9152 MiB`, `47.4s` | `16104 MiB`, `38.4s` |
 | `{"mode":"layer","components":["dit"]}` | `16278 MiB`, `4.8s` | not measured | not measured |
 | `--enable-cpu-offload` | CUDA out-of-memory during warmup | not measured | not measured |
 
@@ -356,7 +356,7 @@ reporting worker peak reserved GPU memory and generation time for one request:
 | none | `75224 MiB`, `1.4s` | `75224 MiB`, `10.6s` | not measured |
 | `--enable-cpu-offload` | `66534 MiB`, `3.8s` | `66534 MiB`, `13.7s` | `69896 MiB`, `20.6s` |
 | `{"mode":"module","components":["dit"]}` | `75026 MiB`, `3.3s` | not measured | not measured |
-| `{"mode":"module","components":["text_encoder"]}` | `69822 MiB`, `1.9s` | not measured | not measured |
+| `{"mode":"module","components":["text_encoder"]}` | `66940 MiB`, `1.3s` | not measured | not measured |
 | `--enable-layerwise-offload` | `13160 MiB`, `5.1s` | `13160 MiB`, `45.4s` | `21396 MiB`, `17.9s` |
 | `{"mode":"layer","components":["dit"]}` | `20286 MiB`, `4.9s` | not measured | not measured |
 
